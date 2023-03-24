@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 
 interface IstateType {
-	user: { username: string | undefined; email: string | undefined };
+	user: { username?: string; email?: string };
 }
 
 const initialValue: IstateType = {
