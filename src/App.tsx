@@ -1,8 +1,6 @@
-import { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SideNavigation from "./components/SideNavigation";
-import { UserContext } from "./context/userContext";
 import BlogsList from "./pages/BlogsList";
 import Error from "./pages/Error";
 import Explore from "./pages/Explore";
@@ -11,7 +9,6 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 
 function App() {
-	const { state } = useContext(UserContext)!;
 	return (
 		<BrowserRouter>
 			<div className="flex">
@@ -19,7 +16,7 @@ function App() {
 					<Route
 						path="/"
 						element={
-							<ProtectedRoute user={state.user!}>
+							<ProtectedRoute>
 								<SideNavigation />
 							</ProtectedRoute>
 						}

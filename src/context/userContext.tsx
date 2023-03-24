@@ -47,10 +47,13 @@ interface IProviderProps {
 export default function Provider({ children }: IProviderProps) {
 	const [state, dispatch] = useReducer(reducer, initialValue);
 
+	const token = localStorage.getItem("userToken");
+	if (token) {
+		state.user.token = token;
+	}
 	const contextValue: IUserContextType = {
 		state,
 		dispatch,
-		
 	};
 
 	return (
