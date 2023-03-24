@@ -1,11 +1,11 @@
 import { createContext, useReducer } from "react";
 
 interface IstateType {
-	user: { username?: string; email?: string };
+	user: { username?: string; email?: string; token?: string };
 }
 
 const initialValue: IstateType = {
-	user: { username: undefined, email: undefined },
+	user: { username: undefined, email: undefined, token: undefined },
 };
 
 interface IUserContextType {
@@ -19,14 +19,9 @@ export const enum ACTION_TYPE {
 	ADD_USER,
 }
 
-interface IactionPayloadType {
-	username?: string;
-	email?: string;
-}
-
 interface IactionType {
 	type: ACTION_TYPE;
-	payload: IactionPayloadType;
+	payload: IstateType;
 }
 
 const reducer = (state: IstateType, action: IactionType): IstateType => {
@@ -35,8 +30,9 @@ const reducer = (state: IstateType, action: IactionType): IstateType => {
 			return {
 				...state,
 				user: {
-					username: action.payload.username,
-					email: action.payload.email,
+					username: action.payload.user.username,
+					email: action.payload.user.email,
+					token: action.payload.user.token,
 				},
 			};
 		default:
@@ -54,6 +50,7 @@ export default function Provider({ children }: IProviderProps) {
 	const contextValue: IUserContextType = {
 		state,
 		dispatch,
+		
 	};
 
 	return (

@@ -11,45 +11,23 @@ import Profile from "./pages/Profile";
 import Search from "./pages/Search";
 
 function App() {
-	const value = useContext(UserContext);
-	console.log(value);
+	const { state } = useContext(UserContext)!;
 	return (
 		<BrowserRouter>
 			<div className="flex">
 				<Routes>
-					<Route path="/" element={<SideNavigation />}>
-						<Route
-							index
-							element={
-								<ProtectedRoute user={value?.state.user!}>
-									<BlogsList />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/search"
-							element={
-								<ProtectedRoute user={value?.state.user!}>
-									<Search />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/explore"
-							element={
-								<ProtectedRoute user={value?.state.user!}>
-									<Explore />
-								</ProtectedRoute>
-							}
-						/>
-						<Route
-							path="/profile"
-							element={
-								<ProtectedRoute user={value?.state.user!}>
-									<Profile />
-								</ProtectedRoute>
-							}
-						/>
+					<Route
+						path="/"
+						element={
+							<ProtectedRoute user={state.user!}>
+								<SideNavigation />
+							</ProtectedRoute>
+						}
+					>
+						<Route index element={<BlogsList />} />
+						<Route path="/search" element={<Search />} />
+						<Route path="/explore" element={<Explore />} />
+						<Route path="/profile" element={<Profile />} />
 					</Route>
 					<Route path="/login" element={<Login />} />
 					<Route path="*" element={<Error />} />
