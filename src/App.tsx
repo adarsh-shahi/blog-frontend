@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SideNavigation from "./components/SideNavigation";
+import AddPost from "./pages/AddPost";
 import BlogsList from "./pages/BlogsList";
 import Error from "./pages/Error";
 import Explore from "./pages/Explore";
@@ -22,6 +23,7 @@ function App() {
 						}
 					>
 						<Route index element={<BlogsList />} />
+						<Route path="/post" element={<AddPost />} />
 						<Route path="/search" element={<Search />} />
 						<Route path="/explore" element={<Explore />} />
 						<Route path="/profile" element={<Profile />} />

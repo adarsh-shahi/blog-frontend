@@ -11,6 +11,7 @@ export default function Login() {
 
 	const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		console.log(usernameValue, passwordValue);
 		if (!passwordValue || !usernameValue) return;
 		const response = await fetch("/v1/login", {
 			method: "POST",
