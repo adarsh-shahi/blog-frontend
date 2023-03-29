@@ -2,10 +2,6 @@ import { ChangeEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 import { ACTION_TYPE } from "../context/userContext";
-import { faB, faCheckSquare, faCoffee, faDatabase, faHouseLaptop, faS, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-library.add(faB, faS, faHouseLaptop, faCheckSquare, faCoffee, faDatabase, faWindowMaximize)
 
 export default function Login() {
 	const [usernameValue, setUsernameValue] = useState("");
